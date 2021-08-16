@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="../../custom-button.scss">
+    <title>Exercise 3 - A11y Workshop</title>
+</head>
+<body>
+    <h1>Exercise 3 - Focus!</h1>
+    <p>
+        Here's where accessibility stuff starts to come into play. Your button currently can't be reached at all by
+        someone with a visual disability. Why is that? Well,
+    </p>
+    <a href="/src/exercises/exercise-2/exercise.html">&lt;&lt; Previous Exercise</a>
+    <a href="/">Back to table of contents</a>
+    <a href="/src/exercises/exercise-4/exercise.html">Next Exercise &gt;&gt;</a>
+    <hr>
+    <p>Your component is rendered here:</p>
+    <div id="app"></div>
+
+    <script type="module">
+        import Vue from "vue/dist/vue";
+        import CustomButton from "../../custom-button";
+
+        new Vue({
+            el: "#app",
+            template: `
+                <custom-button></custom-button>
+            `,
+            components: {
+                CustomButton,
+            }
+        });
+    </script>
+</body>
+</html>

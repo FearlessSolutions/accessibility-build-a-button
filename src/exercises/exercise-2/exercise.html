@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="../../custom-button.scss">
+    <title>Exercise 2 - A11y Workshop</title>
+</head>
+<body>
+    <h1>Exercise 2 - Click!</h1>
+    <p>A button that can't be clicked isn't much of a button is it?</p>
+    <p>
+        In this exercise, you'll just need to capture the <b>onClick</b> event and re-emit it.
+        This will be important later, as you don't want the component to fire the click event every
+        time it's clicked! Think about why that might be the case.
+    </p>
+    <p>
+        Don't forget to use some form of <code>preventDefault()</code> to stop the event from bubbling! If you're not familiar
+        with event handling and emission in Vue, you can read up on it <a href="https://vuejs.org/v2/guide/events.html">here (event handling)</a>
+        and <a href="https://vuejs.org/v2/guide/components-custom-events.html">here (event emission)</a>.
+    </p>
+    <p>
+        To check how you did, just run <b>npm run exercise-2-verify</b>.
+    </p>
+    <a href="/src/exercises/exercise-1/exercise.html">&lt;&lt; Previous Exercise</a>
+    <a href="/">Back to table of contents</a>
+    <a href="/src/exercises/exercise-3/exercise.html">Next Exercise &gt;&gt;</a>
+    <hr>
+    <p>Your component is rendered here:</p>
+    <div id="app"></div>
+
+    <script type="module">
+        import Vue from "vue/dist/vue";
+        import CustomButton from "../../custom-button";
+
+        new Vue({
+            el: "#app",
+            template: `
+                <custom-button></custom-button>
+            `,
+            components: {
+                CustomButton,
+            }
+        });
+    </script>
+</body>
+</html>
