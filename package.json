@@ -1,0 +1,36 @@
+{
+  "name": "accessibility-workshop",
+  "version": "1.0.0",
+  "description": "Learn to make an accessible button from scratch!",
+  "main": "index.js",
+  "scripts": {
+    "start": "vite .",
+    "all-verify": "jest",
+    "exercise-1-verify": "jest --testPathPattern 'src/exercises/exercise-1/'",
+    "exercise-2-verify": "jest --testPathPattern 'src/exercises/exercise-2/'"
+  },
+  "author": "Evan Rittenhouse <erittenhouse@fearless.tech>",
+  "license": "MIT",
+  "dependencies": {
+    "vue": "^2.6.14"
+  },
+  "devDependencies": {
+    "@babel/preset-env": "^7.15.0",
+    "@vue/test-utils": "^1.2.2",
+    "babel-jest": "^27.0.6",
+    "jest": "^27.0.6",
+    "jsdom": "^17.0.0",
+    "jsdom-global": "^3.0.2",
+    "sass": "^1.37.5",
+    "vite": "^2.5.0",
+    "vue-template-compiler": "^2.6.14"
+  },
+  "jest": {
+    "setupFiles": [
+      "<rootDir>/jest-setup.js"
+    ],
+    "transform": {
+      "^.+\\.js$": "babel-jest"
+    }
+  }
+}

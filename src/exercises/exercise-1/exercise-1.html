@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="../../custom-button.scss">
+    <title>Exercise 1 - A11y Workshop</title>
+</head>
+<body>
+    <h1>Exercise 1 - If it looks like a button...</h1>
+    <p>...and acts like a button, it's probably a button.</p>
+    <p>
+        The first step is to take a component and make it look like a button. You'll be using the same code
+        for your button throughout this workshop, so get creative! You can find a skeleton for your button
+        under <b>src/custom-button.js</b>. The stylesheet for your component can be found at <b>src/custom-button.scss</b>.
+    </p>
+    <p>
+        All we'll be checking for here is whether or not you've applied the "custom-button" class to the top-level div
+        of the custom-button. We're not grading for looks 😉. When you want to test if you got it right, just run
+        <b>npm run exercise-1-verify</b>.
+    </p>
+    <a href="/">Back to table of contents</a>
+    <a href="/src/exercises/exercise-2/exercise-2.html">Next Exercise >></a>
+    <hr>
+    <p>Your component is rendered here:</p>
+    <div id="app"></div>
+
+    <script type="module">
+        import Vue from "vue/dist/vue";
+        import CustomButton from "../../custom-button";
+
+        new Vue({
+            el: "#app",
+            template: `
+                <custom-button></custom-button>
+            `,
+            components: {
+                CustomButton,
+            }
+        });
+    </script>
+</body>
+</html>
