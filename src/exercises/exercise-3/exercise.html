@@ -8,8 +8,23 @@
 <body>
     <h1>Exercise 3 - Focus!</h1>
     <p>
-        Here's where accessibility stuff starts to come into play. Your button currently can't be reached at all by
-        someone with a visual disability. Why is that? Well,
+        Here's where accessibility stuff starts to come into play. Your button currently can't be reached or activated easily by
+        someone with a visual disability. Why is that? Well, when assistive tech users are using the page, they don't tend to use
+        the mouse to navigate the page, they do it both with their screen reader and with the keyboard!
+    </p>
+    <p>
+        If you have access to a screen reader such as NVDA or VoiceOver (which has a really good tutorial, by the way) I recommend
+        trying to navigate the page using that and trying to get to your button using the TAB key. Notice that you're able to tab
+        to the real button and the links on the page, but not your custom button.
+    </p>
+    <p>
+        In this exercise, you'll make it so you can actually tab to your custom button! This can be done by adding your custom button
+        into what's called the <b>tab order</b>. To do this, just add a <code>tabindex="0"</code> attribute on the top-level div tag
+        in the custom button and you'll be able to tab to it! You can check you got it right with <b>npm run exercise-3-verify</b>.
+    </p>
+    <p>
+        Although we won't be testing for it, try your hand at customizing the focus state for your button. The button enters this
+        focus state when you've tabbed to it and it is "focused". You can select this state in CSS with the <b>:focus</b> pseudo-class.
     </p>
     <a href="/src/exercises/exercise-2/exercise.html">&lt;&lt; Previous Exercise</a>
     <a href="/">Back to table of contents</a>
@@ -25,10 +40,18 @@
         new Vue({
             el: "#app",
             template: `
-                <custom-button></custom-button>
+              <div>
+                  <custom-button v-on:click="handleClick"></custom-button>
+                  <button v-on:click="handleClick">This is a real button.</button>
+              </div>
             `,
             components: {
                 CustomButton,
+            },
+            methods: {
+                handleClick() {
+                    window.alert("Click!");
+                }
             }
         });
     </script>

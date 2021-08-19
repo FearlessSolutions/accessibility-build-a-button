@@ -7,7 +7,11 @@
     "start": "vite .",
     "all-verify": "jest",
     "exercise-1-verify": "jest --testPathPattern 'src/exercises/exercise-1/'",
-    "exercise-2-verify": "jest --testPathPattern 'src/exercises/exercise-2/'"
+    "exercise-2-verify": "jest --testPathPattern 'src/exercises/exercise-2/'",
+    "exercise-3-verify": "jest --testPathPattern 'src/exercises/exercise-3/'",
+    "exercise-4-verify": "jest --testPathPattern 'src/exercises/exercise-4/'",
+    "exercise-5-verify": "jest --testPathPattern 'src/exercises/exercise-5/'",
+    "exercise-6-verify": "jest --testPathPattern 'src/exercises/exercise-6/'"
   },
   "author": "Evan Rittenhouse <erittenhouse@fearless.tech>",
   "license": "MIT",

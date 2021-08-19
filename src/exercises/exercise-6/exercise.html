@@ -3,11 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="../../custom-button.scss">
-    <title>Exercise # - A11y Workshop</title>
+    <title>Exercise 6 - A11y Workshop</title>
 </head>
 <body>
+    <h1>Exercise 6 - Special (keyboard) operations</h1>
+    <p>
+        We're at the end of the line! There's only one more thing we HAVE to do to make this button fully accessible.
+    </p>
+    <p>
+        If you recall, in Exercise 3 we mentioned that screen reader users tend to navigate around the page with the
+        keyboard, and they can focus interactive elements on the page with the Tab key. If screen reader users are
+        just using the keyboard then, how can they click the button?
+    </p>
+    <p>
+        Well, it turns out an accessible button can be activated via both the <b>Space bar and Enter key</b>. While the
+        button is focused, it should fire the "click" event if either enter or the space bar is pressed <i>and it's not
+        disabled</i>. <a href="https://vuejs.org/v2/guide/events.html#Key-Modifiers" target="_blank">This Vue documentation</a>
+        on event listener modifiers should also come in handy.
+    </p>
+    <p>
+        Go ahead and implement support for Space and Enter on your button, then verify your progress with <b>npm run exercise-6-verify</b>.
+        We will be verifying your support via the <code>keyup</code> event, so keep that in mind.
+    </p>
+    <a href="/src/exercises/exercise-5/exercise.html">&lt;&lt; Previous Exercise</a>
     <a href="/">Back to table of contents</a>
-    <a href="/src/exercises/exercise-#/exercise.html">Next Exercise &gt;&gt;</a>
+    <a href="/end.html">Workshop End &gt;&gt;</a>
     <hr>
     <p>Your component is rendered here:</p>
     <div id="app"></div>
@@ -19,11 +39,27 @@
         new Vue({
             el: "#app",
             template: `
-                <custom-button></custom-button>
+              <div>
+              <custom-button v-on:click="handleClick" v-bind:disabled="disableInput === 'disabled'"></custom-button>
+
+              <h4>Custom button disabled state</h4>
+              <input type="radio" v-model="disableInput" id="disabledRadio" value="disabled">
+              <label for="disabledRadio">Disable Button</label>
+              <input type="radio" v-model="disableInput" id="enabledRadio" value="enabled">
+              <label for="enabledRadio">Enable Button</label>
+              </div>
             `,
             components: {
                 CustomButton,
-            }
+            },
+            data: () => ({
+                disableInput: "enabled",
+            }),
+            methods: {
+                handleClick() {
+                    window.alert("Click!");
+                },
+            },
         });
     </script>
 </body>

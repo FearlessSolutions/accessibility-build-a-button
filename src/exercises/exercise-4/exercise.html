@@ -3,11 +3,33 @@
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="../../custom-button.scss">
-    <title>Exercise # - A11y Workshop</title>
+    <title>Exercise 4 - A11y Workshop</title>
 </head>
 <body>
+    <h1>Exercise 4 - But does it sound like a button?</h1>
+    <p>
+        If you tested the previous exercise with NVDA or VoiceOver, you may have noticed that when you focused the
+        real button the screen reader actually read off that it was a button, but when you focused your custom button
+        that it just read the text content or something.
+    </p>
+    <p>
+        If someone depends on a screen reader, that's all they're going to hear and they won't understand that what they're
+        focused on is, in fact, supposed to be a button. We'll fix that in this exercise.
+    </p>
+    <p>
+        Screen readers can actually be told that your custom button is a button. This is done with what's called an
+        <b>ARIA Role</b>. There are many different kinds of roles, such as <code>checkbox, slider, option,</code> and
+        <code>tab</code>. MDN has a good list of others <a href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/ARIA_Techniques" target="_blank">here</a>.
+        The one you'll need to specify in this exercise is <code>button</code>. (Couldn't see that one coming!)
+    </p>
+    <p>
+        Try adding the attribute <code>role="button"</code> to your custom button, then try focusing it again while
+        using NVDA or VoiceOver. The screen reader should now report that your button is, in fact, a button. You can check
+        you got it right with <b>npm run exercise-4-verify</b>.
+    </p>
+    <a href="/src/exercises/exercise-3/exercise.html">&lt;&lt; Previous Exercise</a>
     <a href="/">Back to table of contents</a>
-    <a href="/src/exercises/exercise-#/exercise.html">Next Exercise &gt;&gt;</a>
+    <a href="/src/exercises/exercise-5/exercise.html">Next Exercise &gt;&gt;</a>
     <hr>
     <p>Your component is rendered here:</p>
     <div id="app"></div>
@@ -19,10 +41,15 @@
         new Vue({
             el: "#app",
             template: `
-                <custom-button></custom-button>
+              <custom-button v-on:click="handleClick"></custom-button>
             `,
             components: {
                 CustomButton,
+            },
+            methods: {
+                handleClick() {
+                    window.alert("Click!");
+                }
             }
         });
     </script>

@@ -3,11 +3,78 @@
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="../../custom-button.scss">
-    <title>Exercise # - A11y Workshop</title>
+    <title>Exercise 5 - A11y Workshop</title>
 </head>
 <body>
+    <h1>Exercise 5 - Don't press the button!</h1>
+    <p>
+        Here's where things start getting a little tricky. We've included a real button in this exercise to compare against.
+        Buttons are more than something you can just click and it does something on the page. It can also be disabled
+        if you don't want it to be clicked on just yet.
+    </p>
+    <p>
+        There's actually a lot of nuance to a disabled button! Not only can you not click it, the following happens:
+    </p>
+    <ul>
+        <li>The button gets greyed out</li>
+        <li>The button no longer fires click events</li>
+        <li>The button is removed from the tab order, so you can't tab to it while disabled</li>
+        <li>If you force the screen reader to look at the button, it will report that it is disabled</li>
+    </ul>
+    <p>
+        This brings us to another point about accessibility - elements can have different states that can be reported
+        to a screen reader, and this is communicated through its <b>ARIA State</b>. Such states are communicated through
+        the presence of different attributes, such as <code>aria-hidden, aria-checked,</code> and <code>aria-expanded</code>.
+        The important one in this exercise will be <code>aria-disabled</code>.
+    </p>
+    <p>
+        Specifically, here's what you'll need to do for this exercise:
+    </p>
+    <ul>
+        <li>
+            Add a "disabled" prop to your custom button which can be set to true or false.
+            <ul>
+                <li>
+                    If you're unfamiliar with props in Vue,
+                    <a href="https://vuejs.org/v2/guide/components-props.html" target="_blank">you can read up on how to use them here</a>.
+                </li>
+                <li>
+                    You might also find <a href="https://vuejs.org/v2/guide/computed.html" target="_blank">this section on computed properties and watchers useful</a>.
+                </li>
+            </ul>
+        </li>
+        <li>
+            Flesh out a "custom-button-disabled" class that gets applied to the outer div and changes the appearance when
+            disabled.
+            <ul>
+                <li>
+                    If you're not sure how to do this,
+                    <a href="https://vuejs.org/v2/guide/class-and-style.html" target="_blank">here's some Vue documentation on class bindings</a>.
+                </li>
+            </ul>
+        </li>
+        <li>
+            Apply the <code>aria-disabled</code> property to the outer div when the button is disabled so screen readers
+            know it's disabled.
+            <ul>
+                <li>
+                    If you're unsure how to do this,
+                    <a href="https://vuejs.org/v2/guide/syntax.html#Attributes" target="_blank">here's some Vue documentation on rendering attributes</a>.
+                </li>
+            </ul>
+        </li>
+        <li>Do not emit "click" events from the custom button when it is clicked while disabled.</li>
+        <li>
+            Remove the custom button from the tab order when it is disabled, either by setting it to "-1" or removing
+            the tabindex attribute while disabled.
+        </li>
+    </ul>
+    <p>
+        As always, you can check how you're doing with <b>npm run exercise-5-verify</b>.
+    </p>
+    <a href="/src/exercises/exercise-4/exercise.html">&lt;&lt; Previous Exercise</a>
     <a href="/">Back to table of contents</a>
-    <a href="/src/exercises/exercise-#/exercise.html">Next Exercise &gt;&gt;</a>
+    <a href="/src/exercises/exercise-6/exercise.html">Next Exercise &gt;&gt;</a>
     <hr>
     <p>Your component is rendered here:</p>
     <div id="app"></div>
@@ -19,11 +86,28 @@
         new Vue({
             el: "#app",
             template: `
-                <custom-button></custom-button>
+              <div>
+                  <custom-button v-on:click="handleClick" v-bind:disabled="disableInput === 'disabled'"></custom-button>
+                  <button disabled>You can't click me!</button>
+
+                  <h4>Custom button disabled state</h4>
+                  <input type="radio" v-model="disableInput" id="disabledRadio" value="disabled">
+                  <label for="disabledRadio">Disable Button</label>
+                  <input type="radio" v-model="disableInput" id="enabledRadio" value="enabled">
+                  <label for="enabledRadio">Enable Button</label>
+              </div>
             `,
             components: {
                 CustomButton,
-            }
+            },
+            data: () => ({
+                disableInput: "disabled",
+            }),
+            methods: {
+                handleClick() {
+                    window.alert("Click!");
+                },
+            },
         });
     </script>
 </body>

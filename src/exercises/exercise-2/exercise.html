@@ -15,8 +15,8 @@
     </p>
     <p>
         Don't forget to use some form of <code>preventDefault()</code> to stop the event from bubbling! If you're not familiar
-        with event handling and emission in Vue, you can read up on it <a href="https://vuejs.org/v2/guide/events.html">here (event handling)</a>
-        and <a href="https://vuejs.org/v2/guide/components-custom-events.html">here (event emission)</a>.
+        with event handling and emission in Vue, you can read up on it <a href="https://vuejs.org/v2/guide/events.html" target="_blank">here (event handling)</a>
+        and <a href="https://vuejs.org/v2/guide/components-custom-events.html" target="_blank">here (event emission)</a>.
     </p>
     <p>
         To check how you did, just run <b>npm run exercise-2-verify</b>.
@@ -35,10 +35,15 @@
         new Vue({
             el: "#app",
             template: `
-                <custom-button></custom-button>
+                <custom-button v-on:click="handleClick"></custom-button>
             `,
             components: {
                 CustomButton,
+            },
+            methods: {
+                handleClick() {
+                    window.alert("Click!");
+                }
             }
         });
     </script>
