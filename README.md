@@ -4,7 +4,8 @@ This is an accessibility workshop that explains how to build an accessible butto
 from scratch! It tries to stay as close to native HTML as it can, so you can apply
 what you learn to other frameworks, although it does try to make the experience nicer
 with the use of [Vue.js](https://vuejs.org/) and [SASS](https://sass-lang.com/) on 
-[Vite](https://vitejs.dev/) for snappy feedback.
+[Vite](https://vitejs.dev/) for snappy feedback. [Jest](https://jestjs.io/) is used
+for checking your progress and verifying that you're following the workshop correctly.
 
 ## Getting Started
 
